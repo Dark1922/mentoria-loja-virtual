@@ -6,15 +6,15 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "marca_produto")
-@SequenceGenerator(name = "seq_marca_produto", sequenceName = "seq_marca_produto", allocationSize = 1, initialValue = 1)
-public class MarcaProduto implements Serializable {
+@Table(name = "categoria_produto")
+@SequenceGenerator(name = "seq_categoria_produto", sequenceName = "seq_categoria_produto", allocationSize = 1, initialValue = 1)
+public class CategoriaProduto implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_marca_produto")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_categoria_produto")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "nome_desc", nullable = false)
     private String nomeDesc;
 
     public Long getId() {
@@ -36,7 +36,7 @@ public class MarcaProduto implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        MarcaProduto that = (MarcaProduto) o;
+        CategoriaProduto that = (CategoriaProduto) o;
         return Objects.equals(id, that.id);
     }
 
@@ -45,3 +45,4 @@ public class MarcaProduto implements Serializable {
         return Objects.hashCode(id);
     }
 }
+
