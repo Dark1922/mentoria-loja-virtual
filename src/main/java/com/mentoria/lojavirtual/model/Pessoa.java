@@ -19,7 +19,7 @@ public abstract class Pessoa implements Serializable {
     private Long id = 0L;
 
     @Column(nullable = false)
-    private String nome;
+    private String nome = "";
 
     @Column(nullable = false)
     private String email;
