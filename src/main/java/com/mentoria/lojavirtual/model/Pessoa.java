@@ -22,7 +22,7 @@ public abstract class Pessoa implements Serializable {
     private String nome = "";
 
     @Column(nullable = false)
-    private String email;
+    private String email = "";
 
     @Column(nullable = false)
     private String telefone;
