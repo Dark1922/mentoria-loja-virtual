@@ -37,7 +37,6 @@ public class Usuario implements UserDetails {
                     foreignKey = @ForeignKey(name = "acesso_fk", value = ConstraintMode.CONSTRAINT)))
     private List<Acesso> acessos;
 
-
     // são os acessos, ou seja ROLE_USER, ROLE_ADMIN
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
