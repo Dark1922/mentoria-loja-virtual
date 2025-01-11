@@ -12,7 +12,7 @@ public class Acesso implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_acesso")
-    private Long id;
+    private Long id = 0L;
 
     @Column(nullable = false)
     private String descricao; //Acesso ex: ROLE_ADMIN, ROLE_USER
