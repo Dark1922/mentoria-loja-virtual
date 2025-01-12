@@ -15,7 +15,7 @@ public class Acesso implements GrantedAuthority {
     private Long id = 0L;
 
     @Column(nullable = false)
-    private String descricao; //Acesso ex: ROLE_ADMIN, ROLE_USER
+    private String descricao  = "";  //Acesso ex: ROLE_ADMIN, ROLE_USER
 
     @Override
     public String getAuthority() {
