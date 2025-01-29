@@ -26,7 +26,6 @@ public class ImagemProduto implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_imagem_produto")
     private Long id;
 
-
     @Column(columnDefinition = "text", nullable = false)
     private String imagemOriginal;
 
@@ -44,7 +43,6 @@ public class ImagemProduto implements Serializable {
     @JoinColumn(name = "empresa_id", nullable = false,
             foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresa_id_fk"))
     private PessoaJuridica empresa;
-
 
     public PessoaJuridica getEmpresa() {
         return empresa;

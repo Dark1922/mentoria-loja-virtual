@@ -1,114 +1,157 @@
 package com.mentoria.lojavirtual.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mentoria.lojavirtual.enums.TipoEndereco;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+
 @Entity
 @Table(name = "endereco")
 @SequenceGenerator(name = "seq_endereco", sequenceName = "seq_endereco", allocationSize = 1, initialValue = 1)
 public class Endereco implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_endereco")
-    private Long id;
+        @Id
+        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_endereco")
+        private Long id;
 
-    private String ruaLogradouro;
-    private String cep;
-    private String numero;
-    private String complemento;
-    private String bairro;
-    private String uf;
-    private String cidade;
+        @Column(nullable = false)
+        private String ruaLogra;
 
-    @Enumerated(EnumType.STRING)
-    private TipoEndereco tipoEndereco;
+        @Column(nullable = false)
+        private String cep;
 
-    @ManyToOne(targetEntity = Pessoa.class)
-    @JoinColumn(name = "pessoa_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
-    private Pessoa pessoa;
+        @Column(nullable = false)
+        private String numero;
 
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
+        private String complemento;
 
-    public String getCidade() {
-        return cidade;
-    }
+        @Column(nullable = false)
+        private String bairro;
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
+        @Column(nullable = false)
+        private String uf;
 
-    public String getUf() {
-        return uf;
-    }
+        @Column(nullable = false)
+        private String cidade;
 
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
 
-    public String getBairro() {
-        return bairro;
-    }
+        @Column(nullable = true)
+        private String estado;
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
+        @JsonIgnore
+        @ManyToOne(targetEntity = Pessoa.class)
+        @JoinColumn(name = "pessoa_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
+        private Pessoa pessoa;
 
-    public String getComplemento() {
-        return complemento;
-    }
+        @Column(nullable = false)
+        @Enumerated(EnumType.STRING)
+        private TipoEndereco tipoEndereco;
 
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
+        @JsonIgnore
+        @ManyToOne(targetEntity = Pessoa.class)
+        @JoinColumn(name = "empresa_id", nullable = false,
+                foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresa_id_fk"))
+        private Pessoa empresa;
 
-    public String getNumero() {
-        return numero;
-    }
+        public void setEstado(String estado) {
+            this.estado = estado;
+        }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
+        public String getEstado() {
+            return estado;
+        }
 
-    public String getCep() {
-        return cep;
-    }
+        public Pessoa getEmpresa() {
+            return empresa;
+        }
 
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
+        public void setEmpresa(Pessoa empresa) {
+            this.empresa = empresa;
+        }
 
-    public String getRuaLogradouro() {
-        return ruaLogradouro;
-    }
+        public void setTipoEndereco(TipoEndereco tipoEndereco) {
+            this.tipoEndereco = tipoEndereco;
+        }
 
-    public void setRuaLogradouro(String ruaLogradouro) {
-        this.ruaLogradouro = ruaLogradouro;
-    }
+        public TipoEndereco getTipoEndereco() {
+            return tipoEndereco;
+        }
 
-    public Long getId() {
-        return id;
-    }
+        public Long getId() {
+            return id;
+        }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+        public void setId(Long id) {
+            this.id = id;
+        }
 
-    public TipoEndereco getTipoEndereco() {
-        return tipoEndereco;
-    }
+        public String getRuaLogra() {
+            return ruaLogra;
+        }
 
-    public void setTipoEndereco(TipoEndereco tipoEndereco) {
-        this.tipoEndereco = tipoEndereco;
-    }
+        public void setRuaLogra(String ruaLogra) {
+            this.ruaLogra = ruaLogra;
+        }
+
+        public String getCep() {
+            return cep;
+        }
+
+        public void setCep(String cep) {
+            this.cep = cep;
+        }
+
+        public String getNumero() {
+            return numero;
+        }
+
+        public void setNumero(String numero) {
+            this.numero = numero;
+        }
+
+        public String getComplemento() {
+            return complemento;
+        }
+
+        public void setComplemento(String complemento) {
+            this.complemento = complemento;
+        }
+
+        public String getBairro() {
+            return bairro;
+        }
+
+        public void setBairro(String bairro) {
+            this.bairro = bairro;
+        }
+
+        public String getUf() {
+            return uf;
+        }
+
+        public void setUf(String uf) {
+            this.uf = uf;
+        }
+
+        public String getCidade() {
+            return cidade;
+        }
+
+        public void setCidade(String cidade) {
+            this.cidade = cidade;
+        }
+
+        public Pessoa getPessoa() {
+            return pessoa;
+        }
+
+        public void setPessoa(Pessoa pessoa) {
+            this.pessoa = pessoa;
+        }
 
     @Override
     public boolean equals(Object o) {

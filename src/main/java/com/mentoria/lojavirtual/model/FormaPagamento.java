@@ -21,7 +21,6 @@ import jakarta.validation.constraints.NotNull;
 @SequenceGenerator(name = "seq_forma_pagamento", sequenceName = "seq_forma_pagamento", allocationSize = 1, initialValue = 1)
 public class FormaPagamento implements Serializable {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_forma_pagamento")
     private Long id;
@@ -30,14 +29,11 @@ public class FormaPagamento implements Serializable {
     @Column(nullable = false)
     private String descricao;
 
-
     @NotNull(message = "A empresa deve ser informada")
     @ManyToOne(targetEntity = PessoaJuridica.class)
     @JoinColumn(name = "empresa_id", nullable = false,
             foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresa_id_fk"))
     private PessoaJuridica empresa;
-
-
 
     public PessoaJuridica getEmpresa() {
         return empresa;
