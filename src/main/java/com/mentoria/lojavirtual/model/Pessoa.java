@@ -30,6 +30,11 @@ public abstract class Pessoa implements Serializable {
     @OneToMany(mappedBy = "pessoa", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Endereco> enderecos = new ArrayList<>();
 
+    @ManyToOne(targetEntity = PessoaJuridica.class)
+    @JoinColumn(name = "empresa_id", nullable = true,
+            foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresa_id_fk"))
+    private PessoaJuridica empresa;
+
     public void setEnderecos(List<Endereco> enderecos) {
         this.enderecos = enderecos;
     }
@@ -68,6 +73,14 @@ public abstract class Pessoa implements Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public PessoaJuridica getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(PessoaJuridica empresa) {
+        this.empresa = empresa;
     }
 
     @Override
